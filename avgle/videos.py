@@ -3,6 +3,9 @@ from .core import *
 
 class Videos:
 
+    class AvgleError(Exception):
+        pass
+
     def __init__(self, page, limit):
         self._page = page
         self._params = {
@@ -21,9 +24,9 @@ class Videos:
         :param page (optional): integer / default 0
         :param limit (optional): interger 0~250 / default 50
         """
-        url = f"{BASE_URL}/videos/"
-        url += f"{kwargs.get('page', self._page)}"
-        return output(url)
+        url = f"{BASE_URL}/videos/{kwargs.get('page', self._page)}"
+        params = {"limit": kwargs.get("limit", self._params["limit"])}
+        return output(url, params)
 
 
     def search_videos(self, query, **kwargs):
@@ -34,9 +37,9 @@ class Videos:
         :param page (optional): integer / default 0
         """
         if query == "":
-            raise Exception("Query is empty, be must not empty")
+            raise Videos.AvgleError("Query is empty, be must not empty")
         url = f"{BASE_URL}/search/{query}/{kwargs.get('page', self._params['page'])}"
-        return output(url)
+        return output(url, self._params)
 
 
     def search_JAVs(self, query, **kwargs):
@@ -47,17 +50,16 @@ class Videos:
         :param page (optional): integer / default 0
         """
         if query == "":
-            raise Exception("Query is empty, be must not empty")
+            raise Videos.AvgleError("Query is empty, be must not empty")
         url = f"{BASE_URL}/jav/{query}/{kwargs.get('page', self._params['page'])}"
-        return output(url)
+        return output(url, self._params)
 
 
     def get_video_by_id(self, video_id):
         """
-        search Japanese AV by query.
+        get video by id.
 
-        :param query (required): string / not empty.
-        :param page (optional): integer / default 0
+        :param video_id (required): interger.
         """
         url = f"{BASE_URL}/video/{video_id}"
-        return output(url)
+        return output(url, self._params)
