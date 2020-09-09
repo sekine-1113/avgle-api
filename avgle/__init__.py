@@ -5,6 +5,7 @@
 from .videos import Videos
 from .informations import Informations
 
+
 class Avgle(Videos, Informations):
 
     def __init__(self, page=0, limit=50):
