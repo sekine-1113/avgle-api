@@ -12,7 +12,7 @@ class Videos:
         :param limit (optional): interger 1~250 / default 50
         """
         url = f"{BASE_URL}/videos/{page}"
-        params = {"limit": limit}
+        params = {"limit" : limit}
         return output(url, params)
 
 
@@ -23,6 +23,7 @@ class Videos:
 
         :param query (required): string / not empty.
         :param page (optional): integer / default 0
+        :param limit (optional): interger 1~250 / default 50
         :param o (optional): string / default mr
         :: bw: (Last viewed)
         :: mr: (Latest)
@@ -58,6 +59,7 @@ class Videos:
 
         :param query (required): string / not empty.
         :param page (optional): integer / default 0
+        :param limit (optional): interger 1~250 / default 50
         :param o (optional): string / default mr
         :: bw: (Last viewed)
         :: mr: (Latest)
