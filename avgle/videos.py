@@ -16,7 +16,8 @@ class Videos:
         return output(url, params)
 
 
-    def search_videos(self, query, page=0):
+    def search_videos(self, query, page=0, limit=50,
+                    o="mr", t="a", tp=None, c=None):
         """
         search videos by query.
 
@@ -41,15 +42,16 @@ class Videos:
             raise AvgleError("Query is empty, be must not empty")
         url = f"{BASE_URL}/search/{query}/{page}"
         params = {
-            "o"     : "mr",
-            "t"     : "a",
-            "type"  : None,
-            "c"     : None,
+            "limit" : limit,
+            "o"     : o,
+            "t"     : t,
+            "type"  : tp,
+            "c"     : c,
         }
         return output(url, params)
 
 
-    def search_JAVs(self, query, page=0,
+    def search_JAVs(self, query, page=0, limit=50,
                     o="mr", t="a", tp=None, c=None):
         """
         search Japanese AV by query.
@@ -75,10 +77,11 @@ class Videos:
             raise AvgleError("Query is empty, be must not empty")
         url = f"{BASE_URL}/jav/{query}/{page}"
         params = {
-            "o"     : "mr",
-            "t"     : "a",
-            "type"  : None,
-            "c"     : None,
+            "limit" : limit,
+            "o"     : o,
+            "t"     : t,
+            "type"  : tp,
+            "c"     : c,
         }
         return output(url, params)
 
