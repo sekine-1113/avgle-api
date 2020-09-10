@@ -4,3 +4,6 @@ from .informations import Informations
 
 class Avgle(Videos, Informations):
     pass
+
+
+__all__ = ["Avgle",]
