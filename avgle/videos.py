@@ -3,9 +3,6 @@ from .core import *
 
 class Videos:
 
-    class AvgleError(Exception):
-        pass
-
 
     def get_videos(self, page=0, limit=50):
         """
@@ -41,7 +38,7 @@ class Videos:
         :param c (optional): interger(CHID of a valid video category)
         """
         if query == "":
-            raise Videos.AvgleError("Query is empty, be must not empty")
+            raise AvgleError("Query is empty, be must not empty")
         url = f"{BASE_URL}/search/{query}/{page}"
         params = {
             "o"     : "mr",
@@ -75,7 +72,7 @@ class Videos:
         :param c (optional): interger(CHID of a valid video category)
         """
         if query == "":
-            raise Videos.AvgleError("Query is empty, be must not empty")
+            raise AvgleError("Query is empty, be must not empty")
         url = f"{BASE_URL}/jav/{query}/{page}"
         params = {
             "o"     : "mr",
