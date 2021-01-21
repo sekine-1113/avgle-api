@@ -11,13 +11,13 @@ class Videos:
         :param page (optional): integer / default 0
         :param limit (optional): interger 1~250 / default 50
         """
-        url = f"{BASE_URL}/videos/{page}"
+        url = f"{URL}/videos/{page}"
         params = {"limit" : limit}
         return output(url, params)
 
 
     def search_videos(self, query, page=0, limit=50,
-                    o="mr", t="a", tp=None, c=None):
+                    o=LATEST, t=FOREVER, tp=None, c=None):
         """
         search videos by query.
 
@@ -41,7 +41,7 @@ class Videos:
         """
         if query == "":
             raise AvgleError("Query is empty, be must not empty")
-        url = f"{BASE_URL}/search/{query}/{page}"
+        url = f"{URL}/search/{query}/{page}"
         params = {
             "limit" : limit,
             "o"     : o,
@@ -53,7 +53,7 @@ class Videos:
 
 
     def search_JAVs(self, query, page=0, limit=50,
-                    o="mr", t="a", tp=None, c=None):
+                    o=LATEST, t=FOREVER, tp=None, c=None):
         """
         search Japanese AV by query.
 
@@ -77,7 +77,7 @@ class Videos:
         """
         if query == "":
             raise AvgleError("Query is empty, be must not empty")
-        url = f"{BASE_URL}/jav/{query}/{page}"
+        url = f"{URL}/jav/{query}/{page}"
         params = {
             "limit" : limit,
             "o"     : o,
@@ -94,5 +94,5 @@ class Videos:
 
         :param video_id (required): interger.
         """
-        url = f"{BASE_URL}/video/{video_id}"
+        url = f"{URL}/video/{video_id}"
         return output(url)
