@@ -1,4 +1,4 @@
-import avgle
+from avgleAPI import avgle
 
 client = avgle.Avgle()
 
