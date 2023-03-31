@@ -1,9 +1,7 @@
-from avgleAPI import avgle
+import avgle
 
 client = avgle.Avgle()
 
-meta = client.get_videos(limit=1)["response"]["videos"][0]
-for key in meta:
-    print(key, meta[key])
-
-print(client.get_video_categories())
+print(client.videos.get_videos(limit=1)["response"]["videos"][0]['title'])
+print(client.info.get_video_categories()['response']['categories'][0])
+print(client.videos.search_JAVs("AV", o=avgle.OrderBy.LATEST, t=avgle.Date.MONTH)['response']['videos'][0]['title'])

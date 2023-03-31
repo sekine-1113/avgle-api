@@ -1,13 +1,17 @@
-from .core import *
+from .core import Client
 
 
 class Informations:
 
-    def get_video_categories(self):
-        url = f"{URL}/categories"
-        return output(url)
+    def __init__(self, client: Client) -> None:
+        self.client = client
 
+    def get_video_categories(self):
+        return self.client.request(
+            'GET', 'categories',
+        )
 
     def get_video_collections(self, page=1):
-        url = f"{URL}/collections/{page}"
-        return output(url)
+        return self.client.request(
+            'GET', f"collections/{page}"
+        )

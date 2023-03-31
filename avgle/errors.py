@@ -1,0 +1,3 @@
+
+class AvgleError(Exception):
+    pass
