@@ -1,6 +1,7 @@
 from .videos import Videos
 from .informations import Informations
-from .core import Client, AvgleError, OrderBy, Date
+from .core import Client, OrderBy, Date
+from .errors import AvgleError, BadRequest, NotFound, TooManyRequests, ServerError, HTTPException
 
 
 class Avgle(Client):
